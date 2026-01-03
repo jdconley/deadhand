@@ -2,6 +2,16 @@
 
 Remote command and control for Cursor AI agents.
 
+<p align="center">
+  <img src="docs/images/screenshot.png" alt="Deadhand mobile UI" width="300">
+</p>
+
+## Author's Note
+
+I used Cursor to hack Cursor to be able to use Cursor agents from my phone. I did not write a single line of the code in this repository. Not one. Am I proud of the code? I don't know, I haven't even looked at it in detail. Does it work? Yes.
+
+Opus 4.5, GPT 5.2, and Composer-1 were used exclusively. I didn't even do any reverse engineering myself. This was entirely done by Cursor in debug mode wth my direction. I had the best luck with reverse engineering using GPT 5.2. Opus 4.5 largely built the app.
+
 ## Overview
 
 Deadhand enables remote monitoring and control of Cursor AI agents from your phone or any device on your local network. It consists of:

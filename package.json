@@ -1,0 +1,25 @@
+{
+  "name": "deadhand",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Remote command and control for Cursor/VS Code AI agents",
+  "author": "JD Conley <jd.conley@gmail.com> (https://www.jdconley.com)",
+  "license": "MIT",
+  "scripts": {
+    "build": "pnpm -r build",
+    "dev": "pnpm -r --parallel dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}
+

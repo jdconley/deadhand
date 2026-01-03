@@ -1,0 +1,188 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Background layers - bunker steel and concrete */
+  --color-bg: #0c0e0a;
+  --color-bg-elevated: #141812;
+  --color-bg-hover: #1c211a;
+  --color-bg-panel: #111510;
+
+  /* Borders - industrial metal */
+  --color-border: #2a3025;
+  --color-border-subtle: #1e2319;
+  --color-border-heavy: #3d4538;
+
+  /* Text - phosphor green terminal style */
+  --color-text: #c8e6c9;
+  --color-text-muted: #7d9a7f;
+  --color-text-dim: #4a5a4c;
+  --color-text-bright: #a5d6a7;
+
+  /* Accent - Soviet red */
+  --color-accent: #c62828;
+  --color-accent-hover: #d32f2f;
+  --color-accent-glow: rgba(198, 40, 40, 0.4);
+
+  /* Status colors - military indicators */
+  --color-success: #4caf50;
+  --color-warning: #ffb300;
+  --color-error: #f44336;
+  --color-info: #81c784;
+
+  /* Special effects */
+  --color-scanline: rgba(0, 0, 0, 0.08);
+  --color-phosphor-glow: rgba(76, 175, 80, 0.15);
+
+  /* Typography */
+  --font-display: 'VT323', 'Courier New', monospace;
+  --font-sans: 'Share Tech Mono', 'Courier New', monospace;
+  --font-mono: 'Share Tech Mono', 'Courier New', monospace;
+
+  /* Borders - angular, military style */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px var(--color-phosphor-glow);
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* CRT Scanlines overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    var(--color-scanline) 2px,
+    var(--color-scanline) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Subtle screen flicker */
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.95; }
+  94% { opacity: 1; }
+}
+
+body {
+  animation: flicker 8s infinite;
+}
+
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--color-text-bright);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+a:hover {
+  color: var(--color-success);
+  text-shadow: 0 0 8px var(--color-phosphor-glow);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* Industrial scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+  border-left: 1px solid var(--color-border);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-heavy);
+  border: 2px solid var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+/* Utility classes */
+.glow-text {
+  text-shadow: 
+    0 0 5px rgba(76, 175, 80, 0.5),
+    0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.glow-red {
+  text-shadow: 
+    0 0 5px rgba(198, 40, 40, 0.5),
+    0 0 10px rgba(198, 40, 40, 0.3);
+}
+
+/* Warning pulse animation */
+@keyframes warningPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* LED blink animation */
+@keyframes ledBlink {
+  0%, 100% { 
+    opacity: 1;
+    box-shadow: 0 0 8px currentColor;
+  }
+  50% { 
+    opacity: 0.7;
+    box-shadow: 0 0 4px currentColor;
+  }
+}
+
+/* Steady glow animation */
+@keyframes steadyGlow {
+  0%, 100% { 
+    box-shadow: 0 0 6px currentColor;
+  }
+  50% { 
+    box-shadow: 0 0 10px currentColor;
+  }
+}
+

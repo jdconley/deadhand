@@ -1,0 +1,188 @@
+{
+  "name": "deadhand",
+  "displayName": "Deadhand",
+  "description": "Remote command and control for Cursor AI agents",
+  "version": "0.1.0",
+  "author": "JD Conley <jd.conley@gmail.com> (https://www.jdconley.com)",
+  "license": "MIT",
+  "publisher": "deadhand",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onStartupFinished"],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "type": "webview",
+          "id": "deadhand.pairingView",
+          "name": "Deadhand",
+          "icon": "$(broadcast)",
+          "contextualTitle": "Deadhand Pairing"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "deadhand.showStatus",
+        "title": "Deadhand: Show Status"
+      },
+      {
+        "command": "deadhand.openWebUI",
+        "title": "Deadhand: Open Web UI"
+      },
+      {
+        "command": "deadhand.rotateToken",
+        "title": "Deadhand: Rotate Access Token"
+      },
+      {
+        "command": "deadhand.showPairing",
+        "title": "Deadhand: Show Pairing",
+        "icon": "$(broadcast)"
+      },
+      {
+        "command": "deadhand.copyToken",
+        "title": "Deadhand: Copy Access Token"
+      },
+      {
+        "command": "deadhand.copyWebUrl",
+        "title": "Deadhand: Copy Web UI URL"
+      },
+      {
+        "command": "deadhand.refreshPairing",
+        "title": "Deadhand: Refresh Pairing View",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "deadhand.debug.generateReport",
+        "title": "Deadhand Debug: Generate Full Report"
+      },
+      {
+        "command": "deadhand.debug.probeCursor",
+        "title": "Deadhand Debug: Probe Cursor Extensions"
+      },
+      {
+        "command": "deadhand.debug.listAICommands",
+        "title": "Deadhand Debug: List AI-Related Commands"
+      },
+      {
+        "command": "deadhand.debug.inspectExtension",
+        "title": "Deadhand Debug: Inspect Extension by ID"
+      },
+      {
+        "command": "deadhand.debug.listExports",
+        "title": "Deadhand Debug: List All Extension Exports"
+      },
+      {
+        "command": "deadhand.debug.probeCursorCommands",
+        "title": "Deadhand Debug: Probe Cursor Internal Commands"
+      },
+      {
+        "command": "deadhand.debug.discoverComposerState",
+        "title": "Deadhand Debug: Discover Composer/Session State"
+      },
+      {
+        "command": "deadhand.debug.probeAllCursorAPIs",
+        "title": "Deadhand Debug: Probe All Cursor APIs (Comprehensive)"
+      },
+      {
+        "command": "deadhand.debug.exploreStorage",
+        "title": "Deadhand Debug: Explore Storage Files"
+      },
+      {
+        "command": "deadhand.debug.diagnoseTranscript",
+        "title": "Deadhand Debug: Diagnose Transcript Storage"
+      },
+      {
+        "command": "deadhand.debug.execCommand",
+        "title": "Deadhand Debug: Execute Arbitrary Command"
+      },
+      {
+        "command": "deadhand.debug.listComposerCommands",
+        "title": "Deadhand Debug: List Composer Commands"
+      },
+      {
+        "command": "deadhand.debug.listEnabledModels",
+        "title": "Deadhand Debug: List Enabled Models (Cursor Settings)"
+      },
+      {
+        "command": "deadhand.debug.sendMessageToComposer",
+        "title": "Deadhand Debug: Send Message to Composer"
+      },
+      {
+        "command": "deadhand.debug.deeplinkPromptSubmit",
+        "title": "Deadhand Debug: Create Chat from Prompt Deeplink + Submit"
+      },
+      {
+        "command": "deadhand.debug.createComposerSubmit",
+        "title": "Deadhand Debug: Create Composer (No Confirm) + Submit"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "deadhand.refreshPairing",
+          "when": "view == deadhand.pairingView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Deadhand",
+      "properties": {
+        "deadhand.daemonPort": {
+          "type": "number",
+          "default": 31337,
+          "description": "Port for the Deadhand daemon"
+        },
+        "deadhand.autoStartDaemon": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the Deadhand daemon if not running"
+        },
+        "deadhand.daemonDataDir": {
+          "type": "string",
+          "default": "",
+          "description": "Custom data directory for Deadhand daemon (defaults to ~/.deadhand)"
+        },
+        "deadhand.enableLogsAdapter": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable log file parsing adapter (experimental, may break with Cursor updates)"
+        },
+        "deadhand.debugMode": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable debug mode with verbose logging and extension enumeration"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --external:@vscode/sqlite3 --format=cjs --platform=node",
+    "dev": "pnpm build --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist",
+    "package": "vsce package"
+  },
+  "dependencies": {
+    "@vscode/sqlite3": "^5.1.10-vscode",
+    "nanoid": "^5.0.0",
+    "qrcode": "^1.5.3",
+    "ws": "^8.14.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/qrcode": "^1.5.5",
+    "@types/vscode": "^1.85.0",
+    "@types/ws": "^8.5.10",
+    "@vscode/vsce": "^2.22.0",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.1.0"
+  }
+}
+

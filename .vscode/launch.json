@@ -1,0 +1,33 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/packages/extension"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/packages/extension/dist/**/*.js"
+      ],
+      "preLaunchTask": "npm: build - packages/extension"
+    },
+    {
+      "name": "Run Daemon",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/packages/daemon/dist/index.js",
+      "cwd": "${workspaceFolder}/packages/daemon",
+      "preLaunchTask": "Build Daemon + Web"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Extension + Daemon",
+      "configurations": ["Run Daemon", "Run Extension"],
+      "preLaunchTask": "Build All"
+    }
+  ]
+}
+

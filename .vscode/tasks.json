@@ -1,0 +1,52 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "packages/extension",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "label": "npm: build - packages/extension"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "packages/daemon",
+      "group": "build",
+      "problemMatcher": ["$tsc"],
+      "label": "npm: build - packages/daemon"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "path": "packages/web",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: build - packages/web"
+    },
+    {
+      "label": "Build Daemon + Web",
+      "dependsOn": [
+        "npm: build - packages/web",
+        "npm: build - packages/daemon"
+      ],
+      "dependsOrder": "sequence",
+      "group": "build"
+    },
+    {
+      "label": "Build All",
+      "dependsOn": [
+        "npm: build - packages/daemon",
+        "npm: build - packages/web",
+        "npm: build - packages/extension"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
+

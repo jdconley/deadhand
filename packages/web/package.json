@@ -1,0 +1,32 @@
+{
+  "name": "@deadhand/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Deadhand web UI - mobile-friendly dashboard for Cursor agents",
+  "author": "JD Conley <jd.conley@gmail.com> (https://www.jdconley.com)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "preview": "vite preview",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.2.0",
+    "typescript": "^5.3.0",
+    "vite": "^5.0.0",
+    "vitest": "^1.1.0"
+  }
+}
+

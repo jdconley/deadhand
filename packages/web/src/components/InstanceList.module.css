@@ -1,0 +1,256 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  text-align: left;
+  color: var(--color-text);
+  transition: all 0.15s;
+  position: relative;
+}
+
+/* Left accent bar */
+.item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-border-heavy);
+  transition: background 0.15s;
+}
+
+.item:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-text-dim);
+}
+
+.item:hover::before {
+  background: var(--color-success);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.item:active {
+  transform: translateY(1px);
+}
+
+.itemIcon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-success);
+  position: relative;
+}
+
+/* Corner notches on icon */
+.itemIcon::before,
+.itemIcon::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--color-border-heavy);
+}
+
+.itemIcon::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.itemIcon::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+.itemIcon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.itemName {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemTime {
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.itemMeta {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.itemApp {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.itemPid {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-dim);
+}
+
+.itemPid::before {
+  content: 'PID: ';
+  color: var(--color-text-dim);
+}
+
+.itemPath {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemArrow {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--color-text-dim);
+  transition: color 0.15s, transform 0.15s;
+}
+
+.item:hover .itemArrow {
+  color: var(--color-success);
+  transform: translateX(4px);
+}
+
+.itemArrow svg {
+  width: 100%;
+  height: 100%;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--color-bg-elevated);
+  border: 1px dashed var(--color-border);
+}
+
+.emptyIcon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  color: var(--color-text-dim);
+  opacity: 0.5;
+}
+
+.emptyIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.empty h2 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 8px;
+  color: var(--color-text-muted);
+}
+
+.empty p {
+  color: var(--color-text-dim);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 600px) {
+  .item {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .itemIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .itemIcon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .itemName {
+    font-size: 16px;
+  }
+}
+
